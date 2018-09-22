@@ -22,8 +22,6 @@ class App extends React.Component {
       searchedForArticles: "",
       onPublisherPage: false
     };
-
-    this.count = 0;
   }
 
   render() {
