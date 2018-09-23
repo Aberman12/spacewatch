@@ -271,14 +271,17 @@ class Homepage extends React.Component {
   deleteAnyEmptyArticles(val) {
     for (var x = 0; x < val.length; x++) {
       if (
-        !val[x].title ||
-        !val[x].description ||
-        !val[x].urlToImg ||
-        !val[x].url ||
         val[x].title === undefined ||
         val[x].description === undefined ||
-        val[x].urlToImg === undefined ||
+        val[x].urlToImage === undefined ||
         val[x].url === undefined
+      ) {
+        val.splice(x, 1);
+      } else if (
+        val[x].title === null ||
+        val[x].description === null ||
+        val[x].urlToImage === null ||
+        val[x].url === null
       ) {
         val.splice(x, 1);
       }
