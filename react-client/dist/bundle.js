@@ -27243,6 +27243,7 @@ var AllSaved = function AllSaved(props) {
       { className: "allSavedArticles" },
       props.saved.map(function (article) {
         return _react2.default.createElement(_AllSavedIndividual2.default, {
+          key: article._id,
           className: "toTop",
           deleter: props.deleter.bind(undefined),
           article: article

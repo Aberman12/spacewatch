@@ -8,6 +8,7 @@ const AllSaved = props => (
       {props.saved.map(article => {
         return (
           <AllSavedIndividual
+            key={article._id}
             className="toTop"
             deleter={props.deleter.bind(this)}
             article={article}
