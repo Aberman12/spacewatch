@@ -30,6 +30,7 @@
 }
 
 .back:hover {
+  cursor: pointer;
   background-color: #104e8b;
 }
 
@@ -43,6 +44,7 @@
 }
 
 .next:hover {
+  cursor: pointer;
   background-color: #104e8b;
 }
 
@@ -184,14 +186,17 @@
 }
 
 .remove:hover {
+  cursor: pointer;
   background-color: #104e8b;
 }
 
 .btn1:hover {
+  cursor: pointer;
   background-color: #104e8b;
 }
 
 .btn2:hover {
+  cursor: pointer;
   background-color: #104e8b;
 }
 
