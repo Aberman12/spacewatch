@@ -22,25 +22,29 @@ class SignIn extends React.Component {
 
   findLogIn() {
     var username = this.state.username;
-    $.ajax({
-      type: "GET",
-      data: {
-        username
-      },
-      url: "/api/finder",
-      success: data => {
-        if (data === "account found") {
-          window.alert("You alread have an account with us");
-        } else if (data === "create account") {
-          this.setState({ loading: true, show: true });
-          this.createLogin();
+    if (!username.length || !this.state.password.length) {
+      window.alert("Please fill out all forms below");
+    } else {
+      $.ajax({
+        type: "GET",
+        data: {
+          username
+        },
+        url: "/api/finder",
+        success: data => {
+          if (data === "account found") {
+            window.alert("You alread have an account with us");
+          } else if (data === "create account") {
+            this.setState({ loading: true, show: true });
+            this.createLogin();
+          }
+        },
+        error: err => {
+          console.log("error finding login in sign-in: ", err);
+          window.alert("failed to create profile, please try again later");
         }
-      },
-      error: err => {
-        console.log("error finding login in sign-in: ", err);
-        window.alert("failed to create profile, please try again later");
-      }
-    });
+      });
+    }
   }
 
   createLogin() {
@@ -100,6 +104,7 @@ class SignIn extends React.Component {
             }}
             type="text"
             placeholder="Username"
+            required
           />{" "}
           <input
             onKeyUp={e => {
@@ -107,6 +112,7 @@ class SignIn extends React.Component {
             }}
             type="password"
             placeholder="Password"
+            required
           />{" "}
           <button
             className="hoverBtn"

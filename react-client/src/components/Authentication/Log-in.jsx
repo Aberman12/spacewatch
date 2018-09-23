@@ -20,26 +20,30 @@ class LogIn extends React.Component {
     var username = this.state.username;
     var password = this.state.password;
     var here = this;
-    $.ajax({
-      type: "GET",
-      data: {
-        username,
-        password
-      },
-      url: "/api/profiles",
-      success: data => {
-        this.setState({ show: true, loading: true });
-        setTimeout(() => {
-          here.setState({ show: false, loading: false });
-          here.props.history.push({
-            pathname: "/homepage"
-          });
-        }, 1500);
-      },
-      error: err => {
-        window.alert("Incorrect password or username");
-      }
-    });
+    if (!username.length || !password.length) {
+      window.alert("Please fill out all forms below");
+    } else {
+      $.ajax({
+        type: "GET",
+        data: {
+          username,
+          password
+        },
+        url: "/api/profiles",
+        success: data => {
+          this.setState({ show: true, loading: true });
+          setTimeout(() => {
+            here.setState({ show: false, loading: false });
+            here.props.history.push({
+              pathname: "/homepage"
+            });
+          }, 1500);
+        },
+        error: err => {
+          window.alert("Incorrect password or username");
+        }
+      });
+    }
   }
 
   render() {
@@ -71,6 +75,7 @@ class LogIn extends React.Component {
             }}
             type="text"
             placeholder="Username"
+            required
           />{" "}
           <input
             className="log-in-Input2"
@@ -79,6 +84,7 @@ class LogIn extends React.Component {
             }}
             type="password"
             placeholder="Password"
+            required
           />{" "}
           <button
             className="log-in-button1 hoverBtn"

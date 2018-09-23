@@ -25347,26 +25347,30 @@ var LogIn = function (_React$Component) {
       var username = this.state.username;
       var password = this.state.password;
       var here = this;
-      _jquery2.default.ajax({
-        type: "GET",
-        data: {
-          username: username,
-          password: password
-        },
-        url: "/api/profiles",
-        success: function success(data) {
-          _this2.setState({ show: true, loading: true });
-          setTimeout(function () {
-            here.setState({ show: false, loading: false });
-            here.props.history.push({
-              pathname: "/homepage"
-            });
-          }, 1500);
-        },
-        error: function error(err) {
-          window.alert("Incorrect password or username");
-        }
-      });
+      if (!username.length || !password.length) {
+        window.alert("Please fill out all forms below");
+      } else {
+        _jquery2.default.ajax({
+          type: "GET",
+          data: {
+            username: username,
+            password: password
+          },
+          url: "/api/profiles",
+          success: function success(data) {
+            _this2.setState({ show: true, loading: true });
+            setTimeout(function () {
+              here.setState({ show: false, loading: false });
+              here.props.history.push({
+                pathname: "/homepage"
+              });
+            }, 1500);
+          },
+          error: function error(err) {
+            window.alert("Incorrect password or username");
+          }
+        });
+      }
     }
   }, {
     key: "render",
@@ -25418,7 +25422,8 @@ var LogIn = function (_React$Component) {
               _this3.setState({ username: e.target.value });
             },
             type: "text",
-            placeholder: "Username"
+            placeholder: "Username",
+            required: true
           }),
           " ",
           _react2.default.createElement("input", {
@@ -25427,7 +25432,8 @@ var LogIn = function (_React$Component) {
               _this3.setState({ password: e.target.value });
             },
             type: "password",
-            placeholder: "Password"
+            placeholder: "Password",
+            required: true
           }),
           " ",
           _react2.default.createElement(
@@ -25532,25 +25538,29 @@ var SignIn = function (_React$Component) {
       var _this2 = this;
 
       var username = this.state.username;
-      _jquery2.default.ajax({
-        type: "GET",
-        data: {
-          username: username
-        },
-        url: "/api/finder",
-        success: function success(data) {
-          if (data === "account found") {
-            window.alert("You alread have an account with us");
-          } else if (data === "create account") {
-            _this2.setState({ loading: true, show: true });
-            _this2.createLogin();
+      if (!username.length || !this.state.password.length) {
+        window.alert("Please fill out all forms below");
+      } else {
+        _jquery2.default.ajax({
+          type: "GET",
+          data: {
+            username: username
+          },
+          url: "/api/finder",
+          success: function success(data) {
+            if (data === "account found") {
+              window.alert("You alread have an account with us");
+            } else if (data === "create account") {
+              _this2.setState({ loading: true, show: true });
+              _this2.createLogin();
+            }
+          },
+          error: function error(err) {
+            console.log("error finding login in sign-in: ", err);
+            window.alert("failed to create profile, please try again later");
           }
-        },
-        error: function error(err) {
-          console.log("error finding login in sign-in: ", err);
-          window.alert("failed to create profile, please try again later");
-        }
-      });
+        });
+      }
     }
   }, {
     key: "createLogin",
@@ -25628,7 +25638,8 @@ var SignIn = function (_React$Component) {
               _this3.setState({ username: e.target.value });
             },
             type: "text",
-            placeholder: "Username"
+            placeholder: "Username",
+            required: true
           }),
           " ",
           _react2.default.createElement("input", {
@@ -25636,7 +25647,8 @@ var SignIn = function (_React$Component) {
               _this3.setState({ password: e.target.value });
             },
             type: "password",
-            placeholder: "Password"
+            placeholder: "Password",
+            required: true
           }),
           " ",
           _react2.default.createElement(
