@@ -199,7 +199,7 @@ class Homepage extends React.Component {
     function getArticles(cb) {
       $.ajax({
         url:
-          "https://newsapi.org/v2/top-headlines?country=us&category=science&apiKey=b4ac32dc0c014fb0a2f427ddffe64acb",
+          "https://newsapi.org/v2/top-headlines?country=us&category=science&apiKey=95ad6aec37fa45cbbe17f5af095be7ee",
         dataType: "json",
         success: function(response) {
           cb(response);
@@ -210,8 +210,6 @@ class Homepage extends React.Component {
     getArticles(value => {
       var val = value.articles;
       const sortedArticles = [];
-      const completelyEditedArticles = [];
-      const compareObj = {};
 
       val = this.deleteAnyEmptyArticles(val);
       val = this.deleteAnyRepetitiveArticles(val);
@@ -276,7 +274,11 @@ class Homepage extends React.Component {
         !val[x].title ||
         !val[x].description ||
         !val[x].urlToImg ||
-        !val[x].url
+        !val[x].url ||
+        val[x].title === undefined ||
+        val[x].description === undefined ||
+        val[x].urlToImg === undefined ||
+        val[x].url === undefined
       ) {
         val.splice(x, 1);
       }
@@ -341,7 +343,7 @@ class Homepage extends React.Component {
 
   getPublisherArticles(publisher) {
     $.ajax({
-      url: `https://newsapi.org/v2/everything?q=space&sources=${publisher}&apiKey=b4ac32dc0c014fb0a2f427ddffe64acb`,
+      url: `https://newsapi.org/v2/everything?q=space&sources=${publisher}&apiKey=95ad6aec37fa45cbbe17f5af095be7ee`,
       dataType: "json",
       success: value => {
         var val = value.articles;
@@ -405,7 +407,7 @@ class Homepage extends React.Component {
   searchQuery(query) {
     var here = this;
     $.ajax({
-      url: `https://newsapi.org/v2/everything?q=${query}&sources?language=en&apiKey=b4ac32dc0c014fb0a2f427ddffe64acb`,
+      url: `https://newsapi.org/v2/everything?q=${query}&sources?language=en&apiKey=95ad6aec37fa45cbbe17f5af095be7ee`,
       dataType: "json",
       success: function(response) {
         var filteredArticles = [];

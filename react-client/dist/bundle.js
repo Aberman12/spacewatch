@@ -25759,7 +25759,7 @@ var Homepage = function (_React$Component) {
 
       function getArticles(cb) {
         _jquery2.default.ajax({
-          url: "https://newsapi.org/v2/top-headlines?country=us&category=science&apiKey=b4ac32dc0c014fb0a2f427ddffe64acb",
+          url: "https://newsapi.org/v2/top-headlines?country=us&category=science&apiKey=95ad6aec37fa45cbbe17f5af095be7ee",
           dataType: "json",
           success: function success(response) {
             cb(response);
@@ -25770,8 +25770,6 @@ var Homepage = function (_React$Component) {
       getArticles(function (value) {
         var val = value.articles;
         var sortedArticles = [];
-        var completelyEditedArticles = [];
-        var compareObj = {};
 
         val = _this2.deleteAnyEmptyArticles(val);
         val = _this2.deleteAnyRepetitiveArticles(val);
@@ -25824,7 +25822,7 @@ var Homepage = function (_React$Component) {
     key: "deleteAnyEmptyArticles",
     value: function deleteAnyEmptyArticles(val) {
       for (var x = 0; x < val.length; x++) {
-        if (!val[x].title || !val[x].description || !val[x].urlToImg || !val[x].url) {
+        if (!val[x].title || !val[x].description || !val[x].urlToImg || !val[x].url || val[x].title === undefined || val[x].description === undefined || val[x].urlToImg === undefined || val[x].url === undefined) {
           val.splice(x, 1);
         }
       }
@@ -25886,7 +25884,7 @@ var Homepage = function (_React$Component) {
       var _this3 = this;
 
       _jquery2.default.ajax({
-        url: "https://newsapi.org/v2/everything?q=space&sources=" + publisher + "&apiKey=b4ac32dc0c014fb0a2f427ddffe64acb",
+        url: "https://newsapi.org/v2/everything?q=space&sources=" + publisher + "&apiKey=95ad6aec37fa45cbbe17f5af095be7ee",
         dataType: "json",
         success: function success(value) {
           var val = value.articles;
@@ -25937,7 +25935,7 @@ var Homepage = function (_React$Component) {
     value: function searchQuery(query) {
       var here = this;
       _jquery2.default.ajax({
-        url: "https://newsapi.org/v2/everything?q=" + query + "&sources?language=en&apiKey=b4ac32dc0c014fb0a2f427ddffe64acb",
+        url: "https://newsapi.org/v2/everything?q=" + query + "&sources?language=en&apiKey=95ad6aec37fa45cbbe17f5af095be7ee",
         dataType: "json",
         success: function success(response) {
           var filteredArticles = [];
@@ -27702,13 +27700,14 @@ var LaunchInfo = function (_React$Component) {
         url: url,
         dataType: "json",
         success: function success(response) {
+          console.log(response);
           here.setState({ launchList: response });
         }
       });
     }
   }, {
     key: "createCountryFlag",
-    value: function createCountryFlag(code) {
+    value: function createCountryFlag(num, code) {
       var countries = {
         BD: "BGD",
         BE: "BEL",
@@ -27961,6 +27960,9 @@ var LaunchInfo = function (_React$Component) {
         QA: "QAT",
         MZ: "MOZ"
       };
+      if (code === "UNK" && this.state.launchList.launches[num].lsp.countryCode.length) {
+        code = this.state.launchList.launches[num].lsp.countryCode;
+      }
       for (var props in countries) {
         if (countries[props] === code) {
           var newCountryCode = props.toString();
@@ -28023,7 +28025,7 @@ var LaunchInfo = function (_React$Component) {
               "1. ",
               this.state.launchList.launches[0].location.countryCode,
               " ",
-              this.createCountryFlag(this.state.launchList.launches[0].location.countryCode),
+              this.createCountryFlag(0, this.state.launchList.launches[0].location.countryCode),
               " ",
               _react2.default.createElement(
                 "a",
@@ -28053,7 +28055,7 @@ var LaunchInfo = function (_React$Component) {
               "2. ",
               this.state.launchList.launches[1].location.countryCode,
               " ",
-              this.createCountryFlag(this.state.launchList.launches[1].location.countryCode),
+              this.createCountryFlag(1, this.state.launchList.launches[1].location.countryCode),
               " ",
               _react2.default.createElement(
                 "a",
@@ -28082,7 +28084,7 @@ var LaunchInfo = function (_React$Component) {
               "3. ",
               this.state.launchList.launches[2].location.countryCode,
               " ",
-              this.createCountryFlag(this.state.launchList.launches[2].location.countryCode),
+              this.createCountryFlag(2, this.state.launchList.launches[2].location.countryCode),
               " ",
               _react2.default.createElement(
                 "a",
@@ -28111,7 +28113,7 @@ var LaunchInfo = function (_React$Component) {
               "4. ",
               this.state.launchList.launches[3].location.countryCode,
               " ",
-              this.createCountryFlag(this.state.launchList.launches[3].location.countryCode),
+              this.createCountryFlag(3, this.state.launchList.launches[3].location.countryCode),
               " ",
               _react2.default.createElement(
                 "a",
@@ -28140,7 +28142,7 @@ var LaunchInfo = function (_React$Component) {
               "5. ",
               this.state.launchList.launches[4].location.countryCode,
               " ",
-              this.createCountryFlag(this.state.launchList.launches[4].location.countryCode),
+              this.createCountryFlag(4, this.state.launchList.launches[4].location.countryCode),
               " ",
               _react2.default.createElement(
                 "a",

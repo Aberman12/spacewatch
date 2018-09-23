@@ -63,12 +63,13 @@ class LaunchInfo extends React.Component {
       url: url,
       dataType: "json",
       success: function(response) {
+        console.log(response);
         here.setState({ launchList: response });
       }
     });
   }
 
-  createCountryFlag(code) {
+  createCountryFlag(num, code) {
     var countries = {
       BD: "BGD",
       BE: "BEL",
@@ -321,6 +322,12 @@ class LaunchInfo extends React.Component {
       QA: "QAT",
       MZ: "MOZ"
     };
+    if (
+      code === "UNK" &&
+      this.state.launchList.launches[num].lsp.countryCode.length
+    ) {
+      code = this.state.launchList.launches[num].lsp.countryCode;
+    }
     for (var props in countries) {
       if (countries[props] === code) {
         var newCountryCode = props.toString();
@@ -362,6 +369,7 @@ class LaunchInfo extends React.Component {
               <p>
                 1. {this.state.launchList.launches[0].location.countryCode}{" "}
                 {this.createCountryFlag(
+                  0,
                   this.state.launchList.launches[0].location.countryCode
                 )}{" "}
                 <a
@@ -383,6 +391,7 @@ class LaunchInfo extends React.Component {
                 {" "}
                 2. {this.state.launchList.launches[1].location.countryCode}{" "}
                 {this.createCountryFlag(
+                  1,
                   this.state.launchList.launches[1].location.countryCode
                 )}{" "}
                 <a
@@ -403,6 +412,7 @@ class LaunchInfo extends React.Component {
               <p>
                 3. {this.state.launchList.launches[2].location.countryCode}{" "}
                 {this.createCountryFlag(
+                  2,
                   this.state.launchList.launches[2].location.countryCode
                 )}{" "}
                 <a
@@ -423,6 +433,7 @@ class LaunchInfo extends React.Component {
               <p>
                 4. {this.state.launchList.launches[3].location.countryCode}{" "}
                 {this.createCountryFlag(
+                  3,
                   this.state.launchList.launches[3].location.countryCode
                 )}{" "}
                 <a
@@ -443,6 +454,7 @@ class LaunchInfo extends React.Component {
               <p>
                 5. {this.state.launchList.launches[4].location.countryCode}{" "}
                 {this.createCountryFlag(
+                  4,
                   this.state.launchList.launches[4].location.countryCode
                 )}{" "}
                 <a
