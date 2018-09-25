@@ -2,8 +2,8 @@ var mongoose = require("mongoose");
 var bcrypt = require("bcrypt");
 const saltRounds = 10;
 let currentPassword;
-//localhost/spacew
-mongodb: mongoose.connect(
+// mongodb:localhost/spacew
+mongoose.connect(
   "mongodb://aberman:Fender23@ds113853.mlab.com:13853/heroku_6lz5cvzc"
 );
 
