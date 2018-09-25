@@ -25955,8 +25955,8 @@ var Homepage = function (_React$Component) {
           var filteredArticles = [];
           query = query.toLowerCase();
 
-          response = deleteAnyEmptyArticles(response);
-          response = deleteAnyRepetitiveArticles(response);
+          response = this.deleteAnyEmptyArticles(response);
+          response = this.deleteAnyRepetitiveArticles(response);
 
           for (var i = 0; i < response.articles.length; i++) {
             var title = response.articles[i].title.toLowerCase();
