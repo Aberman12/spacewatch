@@ -416,8 +416,8 @@ class Homepage extends React.Component {
         var filteredArticles = [];
         query = query.toLowerCase();
 
-        response = this.deleteAnyEmptyArticles(response);
-        response = this.deleteAnyRepetitiveArticles(response);
+        response = here.deleteAnyEmptyArticles(response);
+        response = here.deleteAnyRepetitiveArticles(response);
 
         for (var i = 0; i < response.articles.length; i++) {
           var title = response.articles[i].title.toLowerCase();
