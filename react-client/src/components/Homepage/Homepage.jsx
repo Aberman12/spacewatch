@@ -334,7 +334,7 @@ class Homepage extends React.Component {
           } else {
             var firstLetter = titleToEdit[v].slice(0, 1).toUpperCase();
             titleToEdit[v] =
-              firstLetter + titleToEdit[v].slice(1, titleToEdit.length - 1);
+              firstLetter + titleToEdit[v].slice(1, titleToEdit.length);
           }
         }
       }

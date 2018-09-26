@@ -25883,7 +25883,7 @@ var Homepage = function (_React$Component) {
               titleToEdit[v] = "SpaceX's";
             } else {
               var firstLetter = titleToEdit[v].slice(0, 1).toUpperCase();
-              titleToEdit[v] = firstLetter + titleToEdit[v].slice(1, titleToEdit.length - 1);
+              titleToEdit[v] = firstLetter + titleToEdit[v].slice(1, titleToEdit.length);
             }
           }
         }
