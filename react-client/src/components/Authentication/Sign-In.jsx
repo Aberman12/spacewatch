@@ -99,6 +99,7 @@ class SignIn extends React.Component {
         <h3 className="button1">Sign Up</h3>
         <div>
           <input
+            className="username"
             onKeyUp={e => {
               this.setState({ username: e.target.value });
             }}
@@ -107,6 +108,7 @@ class SignIn extends React.Component {
             required
           />{" "}
           <input
+            className="password"
             onKeyUp={e => {
               this.setState({ password: e.target.value });
             }}
@@ -115,14 +117,14 @@ class SignIn extends React.Component {
             required
           />{" "}
           <button
-            className="hoverBtn"
+            className="hoverBtn log-sign"
             onClick={() => this.findLogIn()}
             type="submit"
           >
             Sign Up
           </button>
         </div>
-        <button type="submit">
+        <button type="submit" className="to-log-sign">
           <Link to="/">Go to Log-In --></Link>
         </button>
       </div>
