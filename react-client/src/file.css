@@ -79,10 +79,11 @@
 }
 
 .username {
+  margin: auto;
+  display: block;
   width: 240px;
   margin-top: 6px;
   display: list-item;
-  margin-left: 41.6%;
   padding: 4px;
   border-radius: 5px;
   box-sizing: border-box;
@@ -109,10 +110,11 @@
 }
 
 .password {
+  margin: auto;
+  display: block;
   width: 240px;
   margin-top: 6px;
   display: list-item;
-  margin-left: 41.6%;
   padding: 4px;
   border-radius: 5px;
   box-sizing: border-box;
