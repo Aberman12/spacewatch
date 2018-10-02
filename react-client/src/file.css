@@ -1,3 +1,23 @@
+@font-face {
+  font-family: "Stellar-bold";
+  src: url("./Fonts/stellar-bold-webfont.ttf") format("OpenType");
+}
+
+@font-face {
+  font-family: "Stellar-light";
+  src: url("./Fonts/stellar-light-webfont.woff") format("OpenType");
+}
+
+@font-face {
+  font-family: "Stellar-medium";
+  src: url("./Fonts/stellar-medium-webfont.woff") format("OpenType");
+}
+
+@font-face {
+  font-family: "Stellar-regular";
+  src: url("./Fonts/stellar-regular-webfont.woff") format("OpenType");
+}
+
 .buttonera {
   color: white;
   padding: 12px;
@@ -81,7 +101,18 @@
 .username {
   margin: auto;
   display: block;
-  width: 240px;
+  width: 16.8%;
+  margin-top: 6px;
+  display: list-item;
+  padding: 4px;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.username2 {
+  margin: auto;
+  display: block;
+  width: 56.8%;
   margin-top: 6px;
   display: list-item;
   padding: 4px;
@@ -93,7 +124,7 @@
   background-color: #3063a5;
   color: white;
   margin-top: 6px;
-  width: 240px;
+  width: 16.8%;
   padding: 5px;
   border-radius: 5px;
   box-sizing: border-box;
@@ -103,7 +134,7 @@
   background-color: #3063a5;
   color: white;
   margin-top: 6px;
-  width: 240px;
+  width: 16.8%;
   padding: 5px;
   border-radius: 5px;
   box-sizing: border-box;
@@ -112,7 +143,18 @@
 .password {
   margin: auto;
   display: block;
-  width: 240px;
+  width: 16.8%;
+  margin-top: 6px;
+  display: list-item;
+  padding: 4px;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.password2 {
+  margin: auto;
+  display: block;
+  width: 56.8%;
   margin-top: 6px;
   display: list-item;
   padding: 4px;
@@ -396,6 +438,30 @@ li a {
   background-color: #104e8b;
 }
 
+.modal-close {
+  z-index: 9999;
+  color: black;
+  margin-left: -95%;
+  margin-top: 30%;
+  /* margin-top: 50px; */
+  padding: 5px;
+}
+
+.modal-close:hover {
+  cursor: pointer;
+}
+
+.create-new-message {
+  margin-top: 10px;
+  padding: 7px;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.create-new-message:hover {
+  cursor: pointer;
+}
+
 .ModalLoad-main {
   border: solid 2px black;
   border-radius: 7px;
@@ -668,7 +734,7 @@ li a:hover {
   position: fixed;
   background: #3063a5;
   width: 30%;
-  height: 20%;
+  height: 25%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

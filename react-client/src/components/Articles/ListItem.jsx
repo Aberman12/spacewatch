@@ -36,6 +36,7 @@ class ListItem extends React.Component {
         <Modal show={this.state.show} handleClose={this.hideModal}>
           <h2>Send Article via Email</h2>
           <input
+            className="username2"
             type="text"
             placeholder="Enter email (optional)"
             onKeyUp={e => {
@@ -43,6 +44,7 @@ class ListItem extends React.Component {
             }}
           />{" "}
           <input
+            className="password2"
             type="text"
             placeholder="Enter subject line"
             onKeyUp={e => {
@@ -60,7 +62,9 @@ class ListItem extends React.Component {
               this.props.article.url
             }
           >
-            <button type="submit">Create new message</button>
+            <button className="create-new-message" type="submit">
+              Create new message
+            </button>
           </a>
         </Modal>
         <div className="divItem">

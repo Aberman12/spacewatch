@@ -210,7 +210,7 @@ class Homepage extends React.Component {
     getArticles(value => {
       var val = value.articles;
       const sortedArticles = [];
-
+      console.log(val);
       val = this.deleteAnyEmptyArticles(val);
       val = this.deleteAnyRepetitiveArticles(val);
 
@@ -270,6 +270,12 @@ class Homepage extends React.Component {
 
   deleteAnyEmptyArticles(val) {
     for (var x = 0; x < val.length; x++) {
+      // console.log(
+      //   val[x].title,
+      //   val[x].description,
+      //   val[x].urlToImage,
+      //   val[x].url
+      // );
       if (
         val[x].title === undefined ||
         val[x].description === undefined ||
@@ -312,8 +318,10 @@ class Homepage extends React.Component {
   convertTitlesToProperCase(sortedArticles) {
     for (var s = 0; s < sortedArticles.length; s++) {
       var editedTitle;
+      console.log(sortedArticles[s].title);
       var titleToEdit = sortedArticles[s].title.toLowerCase();
       titleToEdit = titleToEdit.split(" ");
+      console.log(titleToEdit);
       for (var v = 0; v < titleToEdit.length; v++) {
         var shouldBeUndercase = false;
         for (var u = 0; u < this.undercaseWords.length; u++) {
@@ -331,6 +339,10 @@ class Homepage extends React.Component {
             titleToEdit[v] = "NASA's";
           } else if (titleToEdit[v] === "spacex's") {
             titleToEdit[v] = "SpaceX's";
+          } else if (titleToEdit[v] === "iss") {
+            titleToEdit[v] = "ISS";
+          } else if (titleToEdit[v] === "bfr") {
+            titleToEdit[v] = "BFR";
           } else {
             var firstLetter = titleToEdit[v].slice(0, 1).toUpperCase();
             titleToEdit[v] =

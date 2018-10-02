@@ -2,11 +2,11 @@ var mongoose = require("mongoose");
 var bcrypt = require("bcrypt");
 const saltRounds = 10;
 let currentPassword;
+const connector =
+  "mongodb://alex.k.berman@gmail.com:Fender23@ds113853.mlab.com:13853/heroku_6lz5cvzc";
 // mongodb://localhost/spacew
 
-mongoose.connect(
-  "mongodb://aberman:Fender23@ds113853.mlab.com:13853/heroku_6lz5cvzc"
-);
+mongoose.connect(connector);
 
 var db = mongoose.connection;
 
