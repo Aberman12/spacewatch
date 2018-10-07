@@ -477,11 +477,11 @@ li a {
 
 .ringloader {
   text-align: center;
-  margin-left: 50%;
+  margin-left: auto;
 }
 
 .sweet-loading {
-  margin-left: 125px;
+  margin-left: 30%;
 }
 
 .letsTryThis {
@@ -651,10 +651,6 @@ li a:hover {
   z-index: 300;
   padding-bottom: 6px;
   margin-left: 0px;
-}
-
-.weather1 {
-  z-index: 7777;
 }
 
 .launchInfo {

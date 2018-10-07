@@ -466,7 +466,6 @@ class LaunchInfo extends React.Component {
                   &#9658;
                 </a>
               </p>
-              <hr className="hr-saved" />
             </div>
           </div>
         ) : (
@@ -483,6 +482,7 @@ class LaunchInfo extends React.Component {
                 }
               </p>
             </div>
+            <hr className="hr-saved" />
             <div>
               <p className="insideLaunch">Launch Location:</p>
               <p>
@@ -492,12 +492,14 @@ class LaunchInfo extends React.Component {
                 }
               </p>
             </div>
+            <hr className="hr-saved" />
             <div>
               <p className="insideLaunch">Launch Date:</p>
               <p>
                 {this.state.launchList.launches[this.state.showLaunchNum].net}
               </p>
             </div>
+            <hr className="hr-saved" />
             <div>
               <p className="insideLaunch">Mission:</p>
               <p>{this.state.missionDescription.substring(0, 290)}</p>

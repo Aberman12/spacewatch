@@ -318,10 +318,8 @@ class Homepage extends React.Component {
   convertTitlesToProperCase(sortedArticles) {
     for (var s = 0; s < sortedArticles.length; s++) {
       var editedTitle;
-      console.log(sortedArticles[s].title);
       var titleToEdit = sortedArticles[s].title.toLowerCase();
       titleToEdit = titleToEdit.split(" ");
-      console.log(titleToEdit);
       for (var v = 0; v < titleToEdit.length; v++) {
         var shouldBeUndercase = false;
         for (var u = 0; u < this.undercaseWords.length; u++) {
@@ -590,7 +588,7 @@ class Homepage extends React.Component {
           />
         </div>
         <h4 className="titleish"> Most Recently Published Articles </h4>
-        <Weather className="weather1" />
+        <Weather />
         <SavedList
           deleter={this.delete}
           article={this.state.saved.slice(0, 10)}

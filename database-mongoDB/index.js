@@ -1,19 +1,26 @@
+require("dotenv").config();
+
 var mongoose = require("mongoose");
 var bcrypt = require("bcrypt");
 const saltRounds = 10;
 let currentPassword;
 // mongodb://localhost/spacew
 
-mongoose.connect(
-  "mongodb://aberman:Fender23@ds113853.mlab.com:13853/heroku_6lz5cvzc"
-);
+// mongoose.connect(process.env.DB_URL);
+// console.log(process.env.DB_URL);
 
-var db = mongoose.connection;
+// var db = mongoose.connection;
 
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", function() {
-  console.log("successfully connected to database");
-});
+// db.on("error", console.error.bind(console, "connection error:"));
+// db.once("open", function() {
+//   console.log(`successfully connected to database @ ${db}`);
+// });
+
+const db = process.env.DB_URL;
+mongoose
+  .connect(db)
+  .then(() => console.log(`Connected to db @ ${process.env.DB_URL}`))
+  .catch(err => console.log(err));
 
 var savedArtist = mongoose.Schema({
   username: {
