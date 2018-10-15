@@ -651,6 +651,7 @@ li a:hover {
   z-index: 300;
   padding-bottom: 6px;
   margin-left: 0px;
+  margin-bottom: 20px;
 }
 
 .launchInfo {
