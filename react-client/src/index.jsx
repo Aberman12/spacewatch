@@ -24,6 +24,12 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount() {
+    window.alert(
+      "Welcome! Please view this app on non-mobile devices only, at full screen!"
+    );
+  }
+
   render() {
     return (
       <div className="start background">
