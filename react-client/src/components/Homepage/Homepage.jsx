@@ -237,7 +237,7 @@ class Homepage extends React.Component {
       }
 
       this.setState({
-        articles: this.convertTitlesToProperCase(sortedArticles)
+        articles: sortedArticles
       });
     });
 
@@ -256,7 +256,7 @@ class Homepage extends React.Component {
             data = data.reverse();
           }
 
-          this.setState({ saved: this.convertTitlesToProperCase(data) });
+          this.setState({ saved: data });
         },
         error: err => {
           console.log(
@@ -315,44 +315,44 @@ class Homepage extends React.Component {
     return val;
   }
 
-  convertTitlesToProperCase(sortedArticles) {
-    for (var s = 0; s < sortedArticles.length; s++) {
-      var editedTitle;
-      var titleToEdit = sortedArticles[s].title.toLowerCase();
-      titleToEdit = titleToEdit.split(" ");
-      for (var v = 0; v < titleToEdit.length; v++) {
-        var shouldBeUndercase = false;
-        for (var u = 0; u < this.undercaseWords.length; u++) {
-          if (titleToEdit[v] === this.undercaseWords[u] && v !== 0) {
-            shouldBeUndercase = true;
-            break;
-          }
-        }
-        if (!shouldBeUndercase) {
-          if (titleToEdit[v] === "nasa") {
-            titleToEdit[v] = "NASA";
-          } else if (titleToEdit[v] === "spacex") {
-            titleToEdit[v] = "SpaceX";
-          } else if (titleToEdit[v] === "nasa's") {
-            titleToEdit[v] = "NASA's";
-          } else if (titleToEdit[v] === "spacex's") {
-            titleToEdit[v] = "SpaceX's";
-          } else if (titleToEdit[v] === "iss") {
-            titleToEdit[v] = "ISS";
-          } else if (titleToEdit[v] === "bfr") {
-            titleToEdit[v] = "BFR";
-          } else {
-            var firstLetter = titleToEdit[v].slice(0, 1).toUpperCase();
-            titleToEdit[v] =
-              firstLetter + titleToEdit[v].slice(1, titleToEdit.length);
-          }
-        }
-      }
-      editedTitle = titleToEdit.join(" ");
-      sortedArticles[s].title = editedTitle;
-    }
-    return sortedArticles;
-  }
+  // convertTitlesToProperCase(sortedArticles) {
+  //   for (var s = 0; s < sortedArticles.length; s++) {
+  //     var editedTitle;
+  //     var titleToEdit = sortedArticles[s].title.toLowerCase();
+  //     titleToEdit = titleToEdit.split(" ");
+  //     for (var v = 0; v < titleToEdit.length; v++) {
+  //       var shouldBeUndercase = false;
+  //       for (var u = 0; u < this.undercaseWords.length; u++) {
+  //         if (titleToEdit[v] === this.undercaseWords[u] && v !== 0) {
+  //           shouldBeUndercase = true;
+  //           break;
+  //         }
+  //       }
+  //       if (!shouldBeUndercase) {
+  //         if (titleToEdit[v] === "nasa") {
+  //           titleToEdit[v] = "NASA";
+  //         } else if (titleToEdit[v] === "spacex") {
+  //           titleToEdit[v] = "SpaceX";
+  //         } else if (titleToEdit[v] === "nasa's") {
+  //           titleToEdit[v] = "NASA's";
+  //         } else if (titleToEdit[v] === "spacex's") {
+  //           titleToEdit[v] = "SpaceX's";
+  //         } else if (titleToEdit[v] === "iss") {
+  //           titleToEdit[v] = "ISS";
+  //         } else if (titleToEdit[v] === "bfr") {
+  //           titleToEdit[v] = "BFR";
+  //         } else {
+  //           var firstLetter = titleToEdit[v].slice(0, 1).toUpperCase();
+  //           titleToEdit[v] =
+  //             firstLetter + titleToEdit[v].slice(1, titleToEdit.length);
+  //         }
+  //       }
+  //     }
+  //     editedTitle = titleToEdit.join(" ");
+  //     sortedArticles[s].title = editedTitle;
+  //   }
+  //   return sortedArticles;
+  // }
 
   getPublisherArticles(publisher) {
     $.ajax({
@@ -411,7 +411,7 @@ class Homepage extends React.Component {
           }
         }
         this.setState({
-          articles: this.convertTitlesToProperCase(sortedArticles)
+          articles: sortedArticles
         });
       }
     });
@@ -446,7 +446,7 @@ class Homepage extends React.Component {
         }
         if (filteredArticles.length) {
           here.setState({
-            articles: here.convertTitlesToProperCase(filteredArticles)
+            articles: filteredArticles
           });
         } else {
           window.alert(`could not find articles relating to ${query}.`);

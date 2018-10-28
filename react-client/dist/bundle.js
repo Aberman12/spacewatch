@@ -25805,7 +25805,7 @@ var Homepage = function (_React$Component) {
         }
 
         _this2.setState({
-          articles: _this2.convertTitlesToProperCase(sortedArticles)
+          articles: sortedArticles
         });
       });
 
@@ -25824,7 +25824,7 @@ var Homepage = function (_React$Component) {
               data = data.reverse();
             }
 
-            _this2.setState({ saved: _this2.convertTitlesToProperCase(data) });
+            _this2.setState({ saved: data });
           },
           error: function error(err) {
             console.log("failed to get saved articles from within Homepage: ", err);
@@ -25865,45 +25865,46 @@ var Homepage = function (_React$Component) {
       }
       return val;
     }
-  }, {
-    key: "convertTitlesToProperCase",
-    value: function convertTitlesToProperCase(sortedArticles) {
-      for (var s = 0; s < sortedArticles.length; s++) {
-        var editedTitle;
-        var titleToEdit = sortedArticles[s].title.toLowerCase();
-        titleToEdit = titleToEdit.split(" ");
-        for (var v = 0; v < titleToEdit.length; v++) {
-          var shouldBeUndercase = false;
-          for (var u = 0; u < this.undercaseWords.length; u++) {
-            if (titleToEdit[v] === this.undercaseWords[u] && v !== 0) {
-              shouldBeUndercase = true;
-              break;
-            }
-          }
-          if (!shouldBeUndercase) {
-            if (titleToEdit[v] === "nasa") {
-              titleToEdit[v] = "NASA";
-            } else if (titleToEdit[v] === "spacex") {
-              titleToEdit[v] = "SpaceX";
-            } else if (titleToEdit[v] === "nasa's") {
-              titleToEdit[v] = "NASA's";
-            } else if (titleToEdit[v] === "spacex's") {
-              titleToEdit[v] = "SpaceX's";
-            } else if (titleToEdit[v] === "iss") {
-              titleToEdit[v] = "ISS";
-            } else if (titleToEdit[v] === "bfr") {
-              titleToEdit[v] = "BFR";
-            } else {
-              var firstLetter = titleToEdit[v].slice(0, 1).toUpperCase();
-              titleToEdit[v] = firstLetter + titleToEdit[v].slice(1, titleToEdit.length);
-            }
-          }
-        }
-        editedTitle = titleToEdit.join(" ");
-        sortedArticles[s].title = editedTitle;
-      }
-      return sortedArticles;
-    }
+
+    // convertTitlesToProperCase(sortedArticles) {
+    //   for (var s = 0; s < sortedArticles.length; s++) {
+    //     var editedTitle;
+    //     var titleToEdit = sortedArticles[s].title.toLowerCase();
+    //     titleToEdit = titleToEdit.split(" ");
+    //     for (var v = 0; v < titleToEdit.length; v++) {
+    //       var shouldBeUndercase = false;
+    //       for (var u = 0; u < this.undercaseWords.length; u++) {
+    //         if (titleToEdit[v] === this.undercaseWords[u] && v !== 0) {
+    //           shouldBeUndercase = true;
+    //           break;
+    //         }
+    //       }
+    //       if (!shouldBeUndercase) {
+    //         if (titleToEdit[v] === "nasa") {
+    //           titleToEdit[v] = "NASA";
+    //         } else if (titleToEdit[v] === "spacex") {
+    //           titleToEdit[v] = "SpaceX";
+    //         } else if (titleToEdit[v] === "nasa's") {
+    //           titleToEdit[v] = "NASA's";
+    //         } else if (titleToEdit[v] === "spacex's") {
+    //           titleToEdit[v] = "SpaceX's";
+    //         } else if (titleToEdit[v] === "iss") {
+    //           titleToEdit[v] = "ISS";
+    //         } else if (titleToEdit[v] === "bfr") {
+    //           titleToEdit[v] = "BFR";
+    //         } else {
+    //           var firstLetter = titleToEdit[v].slice(0, 1).toUpperCase();
+    //           titleToEdit[v] =
+    //             firstLetter + titleToEdit[v].slice(1, titleToEdit.length);
+    //         }
+    //       }
+    //     }
+    //     editedTitle = titleToEdit.join(" ");
+    //     sortedArticles[s].title = editedTitle;
+    //   }
+    //   return sortedArticles;
+    // }
+
   }, {
     key: "getPublisherArticles",
     value: function getPublisherArticles(publisher) {
@@ -25951,7 +25952,7 @@ var Homepage = function (_React$Component) {
             }
           }
           _this3.setState({
-            articles: _this3.convertTitlesToProperCase(sortedArticles)
+            articles: sortedArticles
           });
         }
       });
@@ -25984,7 +25985,7 @@ var Homepage = function (_React$Component) {
           }
           if (filteredArticles.length) {
             here.setState({
-              articles: here.convertTitlesToProperCase(filteredArticles)
+              articles: filteredArticles
             });
           } else {
             window.alert("could not find articles relating to " + query + ".");
